@@ -1,0 +1,74 @@
+[
+    {
+        "id": "1",
+        "nombre": "fifa 22",
+        "precio": "7900",
+        "img": "fifa.png",
+        "plataforma": "ps4",
+        "descripcion": "juego de futbol desarollado por ea sports"
+    },
+    {
+        "id": "2",
+        "nombre": "Farcry 6",
+        "precio": "10500",
+        "img": "fifa.png",
+        "plataforma": "ps5",
+        "descripcion": "juego de futbol desarollado por ea sports"
+    },
+    {
+        "id": "3",
+        "nombre": "Mario Kart Deluxe",
+        "precio": "14300",
+        "img": "fifa.png",
+        "plataforma": "nintendo",
+        "descripcion": "juego de futbol desarollado por ea sports"
+    },
+    {
+        "id": "4",
+        "nombre": "Spider Man",
+        "precio": "7900",
+        "img": "fifa.png",
+        "plataforma": "ps4",
+        "descripcion": "juego de futbol desarollado por ea sports"
+    },
+    {
+        "id": "5",
+        "nombre": "Elder Ring",
+        "precio": "11200",
+        "img": "fifa.png",
+        "plataforma": "ps5",
+        "descripcion": "juego de futbol desarollado por ea sports"
+    },
+    {
+        "id": "6",
+        "nombre": "Cuphead",
+        "precio": "6500",
+        "img": "fifa.png",
+        "plataforma": "nintendo",
+        "descripcion": "juego de futbol desarollado por ea sports"
+    },
+    {
+        "id": "7",
+        "nombre": "Overwatch",
+        "precio": "6400",
+        "img": "fifa.png",
+        "plataforma": "xboxOne",
+        "descripcion": "juego de futbol desarollado por ea sports"
+    },
+    {
+        "id": "8",
+        "nombre": "Metro Exodus",
+        "precio": "9700",
+        "img": "fifa.png",
+        "plataforma": "xboxOne",
+        "descripcion": "juego de futbol desarollado por ea sports"
+    },
+    {
+        "id": "9",
+        "nombre": "Cyberpunk 2077",
+        "precio": "10600",
+        "img": "fifa.png",
+        "plataforma": "xboxOne",
+        "descripcion": "juego de futbol desarollado por ea sports"
+    }
+]

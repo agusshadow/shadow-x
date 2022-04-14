@@ -1,0 +1,23 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.navbar {
+    background-color: rgb(24, 15, 15);
+}
+
+.navbar a {
+    color: white;
+}
+
+.navbar button[type="submit"] {
+    border: 2px solid white;
+    color: white;
+}
+
+footer {
+    background-color: rgb(24, 15, 15);
+}
+
