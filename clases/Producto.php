@@ -1,43 +1,64 @@
 <?php 
 
 class Producto {
-    protected $juego_id;
+    protected $producto_id;
+    protected $tipo;
     protected $nombre;
     protected $precio;
     protected $imagen;
+    protected $alt;
     protected $plataforma;
     protected $descripcion;
+    protected $url_video;
 
     public function traerJuegos() {
         $archivo = __DIR__ . '/../data/productos.json';
         $contenido = file_get_contents($archivo);
         $data = json_decode($contenido, true);
-        $juegos = [];
+        $productos = [];
         foreach ($data as $valor) {
-            $juego = new Producto();
-            $juego->setId($valor['id']);
-            $juego->setNombre($valor['nombre']);
-            $juego->setPrecio($valor['precio']);
-            $juego->setImagen($valor['img']);
-            $juego->setPlataforma($valor['plataforma']);
-            $juego->setDescripcion($valor['descripcion']);
-            array_push($juegos, $juego);
+            $producto = new Producto();
+            $producto->setId($valor['id']);
+            $producto->setTipo($valor['tipo']);
+            $producto->setNombre($valor['nombre']);
+            $producto->setPrecio($valor['precio']);
+            $producto->setImagen($valor['img']);
+            $producto->setAlt($valor['alt']);
+            $producto->setPlataforma($valor['plataforma']);
+            $producto->setDescripcion($valor['descripcion']);
+            $producto->setUrl($valor['url']);
+            array_push($productos, $producto);
         };
-      return $juegos;
+      return $productos;
     }
 
     public function traerPorId($id) {
-        $juegos = (new Producto())->traerJuegos();
-        foreach ($juegos as $juego) {
-            if ($juego->$juego_id === $id) {
-                return $juego;
+        $productos = (new Producto())->traerJuegos();
+        foreach ($productos as $producto) {
+            if ($producto->producto_id === $id) {
+                return $producto;
             }
         }
         return null;
     }
 
+    public function traerPorTipo($tipo) {
+        $productos = (new Producto())->traerJuegos();
+        $array_productos = [];
+        foreach ($productos as $producto) {
+            if ($producto->tipo === $tipo) {
+                array_push($array_productos, $producto);
+            }
+        }
+        return $array_productos;
+    }
+
     public function setId($valor) {
-        return $this->juego_id = $valor;
+        return $this->producto_id = $valor;
+    }
+
+    public function setTipo($valor) {
+        return $this->tipo = $valor;
     }
 
     public function setNombre($valor) {
@@ -52,6 +73,10 @@ class Producto {
         return $this->imagen = $valor;
     }
 
+    public function setAlt($valor) {
+        return $this->alt = $valor;
+    }
+
     public function setPlataforma($valor) {
         return $this->plataforma = $valor;
     }
@@ -60,28 +85,44 @@ class Producto {
         return $this->descripcion = $valor;
     }
 
+    public function setUrl($valor) {
+        return $this->url_video = $valor;
+    }
+
     public function getId() {
-        return $this->$juego_id;
+        return $this->producto_id;
+    }
+
+    public function getTipo() {
+        return $this->tipo;
     }
 
     public function getNombre() {
-        return $this->$nombre;
+        return $this->nombre;
     }
 
     public function getPrecio() {
-        return $this->$precio;
+        return $this->precio;
     }
 
     public function getImagen() {
-        return $this->$imagen;
+        return $this->imagen;
+    }
+
+    public function getAlt() {
+        return $this->alt;
     }
 
     public function getPlataforma() {
-        return $this->$plataforma;
+        return $this->plataforma;
     }
 
     public function getDescripcion() {
-        return $this->$descripcion;
+        return $this->descripcion;
+    }
+
+    public function getUrl() {
+        return $this->url_video;
     }
 
 };

@@ -2,14 +2,32 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: 'Heebo', sans-serif;
+}
+
+.logo {
+    text-transform: uppercase;
+    font-size: 40px;
+}
+
+.descripcion::before {
+    content: "";
+    width: 100%;
+    margin: 0 auto;
+    height: 5px solid rgb(31, 101, 194);
+    display: inline-block;
 }
 
 .navbar {
-    background-color: rgb(24, 15, 15);
+    background-color: rgb(31, 101, 194);
 }
 
 .navbar a {
     color: white;
+}
+
+.navbar a:hover {
+    color: rgb(226, 225, 225);
 }
 
 .navbar button[type="submit"] {
@@ -17,7 +35,86 @@
     color: white;
 }
 
+
+.titulo::after {
+    content: "";
+    width: 60%;
+    height: 4px;
+    background-color: rgb(31, 101, 194);
+    display: block;
+    margin: 15px auto 0 auto;
+}
+
+
+
 footer {
-    background-color: rgb(24, 15, 15);
+    background-color: rgb(31, 101, 194);
+    color: white;
+}
+
+footer ul, li {
+    list-style: none;
+    padding: 0;
+}
+
+footer a {
+    text-decoration: none;
+    margin-bottom: 10px;
+    display: inline-block;
+    color: white;
+    font-weight: 500;
+    transition: 0.3s all;
+}
+
+footer a:hover {
+    color: rgb(202, 200, 200);
+    
+}
+
+.logo-footer {
+    background-image: url(../imagenes/iconografia/logo-blanco.svg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 170px;
+    width: 170px;
+    height: 50px;
+    text-indent: 170px;
+    overflow: hidden;
+    display: block;
+    align-content: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.titulos-footer::after {
+    content: "";
+    background-color: white;
+    height: 3px;
+    width: 50%;
+    display: flex;
+    margin: 7px 0 20px 0;
+}
+
+footer input[type="email"] {
+    border: 0;
+    padding: 7px;
+    border-radius: 3px;
+}
+
+footer input[type="submit"] {
+    border: 0;
+    padding: 7px;
+    border-radius: 3px;
+}
+
+footer input[type="submit"]:hover {
+    background-color: rgb(194, 194, 194);
+    transition: 0.3s all;
+    color: white;
+}
+
+.copy {
+    background-color: rgb(27, 90, 173);
+    color: white;
 }
 
