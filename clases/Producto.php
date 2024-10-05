@@ -1,130 +1,126 @@
 <?php 
 
-class Producto {
-    protected $producto_id;
-    protected $tipo;
-    protected $nombre;
-    protected $precio;
-    protected $imagen;
-    protected $alt;
-    protected $plataforma;
-    protected $descripcion;
-    protected $url_video;
+class Product {
+    private $id;
+    private $product_type;
+    private $name;
+    private $price;
+    private $image;
+    private $brand;
+    private $description;
+    private $sizes;
 
-    public function traerJuegos() {
-        $archivo = __DIR__ . '/../data/productos.json';
-        $contenido = file_get_contents($archivo);
-        $data = json_decode($contenido, true);
-        $productos = [];
-        foreach ($data as $valor) {
-            $producto = new Producto();
-            $producto->setId($valor['id']);
-            $producto->setTipo($valor['tipo']);
-            $producto->setNombre($valor['nombre']);
-            $producto->setPrecio($valor['precio']);
-            $producto->setImagen($valor['img']);
-            $producto->setAlt($valor['alt']);
-            $producto->setPlataforma($valor['plataforma']);
-            $producto->setDescripcion($valor['descripcion']);
-            $producto->setUrl($valor['url']);
-            array_push($productos, $producto);
+    /** 
+     * Retorna todos los productos
+     * @return Product[] retorna todos los productos
+     */
+
+    public function fetchProducts() {
+        $file = __DIR__ . '/../data/products.json';
+        $content = file_get_contents($file);
+        $data = json_decode($content, true);
+        $products = [];
+        foreach ($data as $value) {
+            $product = new Product();
+            $product->setId($value['id']);
+            $product->setProductType($value['product_type']);
+            $product->setName($value['name']);
+            $product->setPrice($value['price']);
+            $product->setImage($value['image']);
+            $product->setBrand($value['brand']);
+            $product->setDescription($value['description']);
+            $product->setSizes($value['sizes']);
+            array_push($products, $product);
         };
-      return $productos;
+        return $products;
     }
 
-    public function traerPorId($id) {
-        $productos = (new Producto())->traerJuegos();
-        foreach ($productos as $producto) {
-            if ($producto->producto_id === $id) {
-                return $producto;
+    public function fetchById($id) {
+        $products = (new Product())->fetchProducts();
+        foreach ($products as $product) {
+            if ($product->getId() === $id) {
+                return $product;
             }
         }
         return null;
     }
 
-    public function traerPorTipo($tipo) {
-        $productos = (new Producto())->traerJuegos();
-        $array_productos = [];
-        foreach ($productos as $producto) {
-            if ($producto->tipo === $tipo) {
-                array_push($array_productos, $producto);
+    public function fetchByType($product_type) {
+        $products = (new Product())->fetchProducts();
+        $filtered_products = [];
+        foreach ($products as $product) {
+            if ($product->getProductType() === $product_type) {
+                array_push($filtered_products, $product);
             }
         }
-        return $array_productos;
+        return $filtered_products;
     }
 
-    public function setId($valor) {
-        return $this->producto_id = $valor;
+    // Setters
+
+    public function setId($value) {
+        $this->id = $value;
     }
 
-    public function setTipo($valor) {
-        return $this->tipo = $valor;
+    public function setProductType($value) {
+        $this->product_type = $value;
     }
 
-    public function setNombre($valor) {
-        return $this->nombre = $valor;
+    public function setName($value) {
+        $this->name = $value;
     }
 
-    public function setPrecio($valor) {
-        return $this->precio = $valor;
+    public function setPrice($value) {
+        $this->precio = $value;
     }
 
-    public function setImagen($valor) {
-        return $this->imagen = $valor;
+    public function setImage($value) {
+        $this->image = $value;
     }
 
-    public function setAlt($valor) {
-        return $this->alt = $valor;
+    public function setBrand($value) {
+        $this->brand = $value;
     }
 
-    public function setPlataforma($valor) {
-        return $this->plataforma = $valor;
+    public function setDescription($value) {
+        $this->description = $value;
     }
 
-    public function setDescripcion($valor) {
-        return $this->descripcion = $valor;
+    public function setSizes($value) {
+        $this->sizes = $value;
     }
 
-    public function setUrl($valor) {
-        return $this->url_video = $valor;
-    }
-
+    // Getters
+    
     public function getId() {
-        return $this->producto_id;
+        return $this->id;
     }
 
-    public function getTipo() {
-        return $this->tipo;
+    public function getProductType() {
+        return $this->product_type;
     }
 
-    public function getNombre() {
-        return $this->nombre;
+    public function getName() {
+        return $this->name;
     }
 
-    public function getPrecio() {
+    public function getPrice() {
         return $this->precio;
     }
 
-    public function getImagen() {
-        return $this->imagen;
+    public function getImage() {
+        return $this->image;
     }
 
-    public function getAlt() {
-        return $this->alt;
+    public function getBrand() {
+        return $this->brand;
     }
 
-    public function getPlataforma() {
-        return $this->plataforma;
+    public function getDescription() {
+        return $this->description;
     }
 
-    public function getDescripcion() {
-        return $this->descripcion;
+    public function getSizes() {
+        return $this->sizes;
     }
-
-    public function getUrl() {
-        return $this->url_video;
-    }
-
-};
-
-?>
+}

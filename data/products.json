@@ -1,0 +1,102 @@
+[
+    {
+        "id": "1",
+        "product_type": "sneaker",
+        "name": "Nike Air Max 90",
+        "price": 120,
+        "image": "https://placehold.co/600x400",
+        "brand": "Nike",
+        "description": "The Nike Air Max 90 stays true to its OG roots with the iconic Waffle sole, stitched overlays and classic TPU accents. Fresh colors give a modern look while Max Air cushioning adds comfort to your journey.",
+        "sizes": [37, 38, 39, 40, 41, 42, 43, 44, 45]
+    },
+    {
+        "id": "2",
+        "product_type": "sneaker",
+        "name": "Adidas Yeezy Boost 350",
+        "price": 350,
+        "image": "https://placehold.co/600x400",
+        "brand": "Adidas",
+        "description": "The Adidas Yeezy Boost 350 combines Kanye West’s signature design with Adidas' Boost technology for ultimate comfort and style. These sneakers offer a lightweight feel and a sleek look that turns heads.",
+        "sizes": [38, 39, 40, 41, 42, 43, 44, 45, 46]
+    },
+    {
+        "id": "3",
+        "product_type": "sneaker",
+        "name": "Puma RS-X3 Puzzle",
+        "price": 90,
+        "image": "https://placehold.co/600x400",
+        "brand": "Puma",
+        "description": "With its bold color-blocking and futuristic design, the Puma RS-X3 Puzzle brings the past into the future. This sneaker features enhanced cushioning for a more comfortable and stylish fit.",
+        "sizes": [36, 37, 38, 39, 40, 41, 42, 43]
+    },
+    {
+        "id": "4",
+        "product_type": "sneaker",
+        "name": "New Balance 997H",
+        "price": 100,
+        "image": "https://placehold.co/600x400",
+        "brand": "New Balance",
+        "description": "Inspired by the classic 997 design, the New Balance 997H features modern materials and a lightweight foam midsole for superior comfort. This sneaker is perfect for everyday wear and urban style.",
+        "sizes": [38, 39, 40, 41, 42, 43, 44, 45]
+    },
+    {
+        "id": "5",
+        "product_type": "sneaker",
+        "name": "Converse Chuck Taylor All Star",
+        "price": 60,
+        "image": "https://placehold.co/600x400",
+        "brand": "Converse",
+        "description": "A true classic, the Converse Chuck Taylor All Star has remained a staple of casual style for decades. Its iconic canvas upper and rubber sole make it a timeless choice for sneaker lovers.",
+        "sizes": [35, 36, 37, 38, 39, 40, 41, 42, 43]
+    },
+    {
+        "id": "6",
+        "product_type": "sneaker",
+        "name": "Vans Old Skool",
+        "price": 85,
+        "image": "https://placehold.co/600x400",
+        "brand": "Vans",
+        "description": "The Vans Old Skool is a symbol of skate culture and street style. With its durable suede and canvas upper and signature waffle outsole, it's a must-have for sneaker enthusiasts.",
+        "sizes": [36, 37, 38, 39, 40, 41, 42, 43, 44]
+    },
+    {
+        "id": "7",
+        "product_type": "sneaker",
+        "name": "Reebok Club C 85",
+        "price": 60,
+        "image": "https://placehold.co/600x400",
+        "brand": "Reebok",
+        "description": "The Reebok Club C 85 brings vintage tennis court style into modern fashion. With a soft leather upper and comfortable EVA midsole, this sneaker delivers both style and support.",
+        "sizes": [37, 38, 39, 40, 41, 42, 43, 44, 45]
+    },
+    {
+        "id": "8",
+        "product_type": "sneaker",
+        "name": "Asics Gel-Lyte III",
+        "price": 110,
+        "image": "https://placehold.co/600x400",
+        "brand": "Asics",
+        "description": "The Asics Gel-Lyte III is known for its split-tongue design and exceptional comfort. This sneaker offers a perfect balance between retro style and cutting-edge performance.",
+        "sizes": [38, 39, 40, 41, 42, 43, 44, 45]
+    },
+    {
+        "id": "9",
+        "product_type": "sneaker",
+        "name": "Jordan 1 Retro High OG",
+        "price": 190,
+        "image": "https://placehold.co/600x400",
+        "brand": "Jordan",
+        "description": "A symbol of basketball history and street fashion, the Jordan 1 Retro High OG offers timeless design and premium materials. With Air-Sole cushioning, these sneakers are as comfortable as they are stylish.",
+        "sizes": [39, 40, 41, 42, 43, 44, 45, 46]
+    },
+    {
+        "id": "10",
+        "product_type": "sneaker",
+        "name": "Under Armour HOVR Phantom 2",
+        "price": 50,
+        "image": "https://placehold.co/600x400",
+        "brand": "Under Armour",
+        "description": "The Under Armour HOVR Phantom 2 is designed for comfort and performance. With HOVR cushioning and a breathable knit upper, these sneakers provide a perfect fit for any activity.",
+        "sizes": [38, 39, 40, 41, 42, 43, 44, 45]
+    }
+]
