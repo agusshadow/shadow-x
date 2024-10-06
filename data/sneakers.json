@@ -1,0 +1,167 @@
+[
+    {
+        "id": "1",
+        "product_type": "sneaker",
+        "name": "Nike Air Max 90",
+        "price": 120,
+        "image": "air-max-90.png",
+        "brand": "Nike",
+        "description": "La Nike Air Max 90 se mantiene fiel a sus raíces OG con la icónica suela Waffle, superposiciones cosidas y acentos clásicos de TPU. Colores frescos dan un aspecto moderno mientras que la amortiguación Max Air añade comodidad a tu recorrido.",
+        "sizes": [37, 38, 39, 40, 41, 42, 43, 44, 45],
+        "stock": 5
+    },
+    {
+        "id": "2",
+        "product_type": "sneaker",
+        "name": "Adidas Yeezy Boost 350",
+        "price": 350,
+        "image": "yeezy-350.png",
+        "brand": "Adidas",
+        "description": "El Adidas Yeezy Boost 350 combina el diseño característico de Kanye West con la tecnología Boost de Adidas para una comodidad y estilo inigualables. Estas zapatillas ofrecen una sensación ligera y un aspecto elegante que atrae miradas.",
+        "sizes": [38, 39, 40, 41, 42, 43, 44, 45, 46],
+        "stock": 0
+    },
+    {
+        "id": "3",
+        "product_type": "sneaker",
+        "name": "Puma RS-X3 Puzzle",
+        "price": 90,
+        "image": "puma-rs-x.png",
+        "brand": "Puma",
+        "description": "Con su atrevido diseño de bloques de color y diseño futurista, el Puma RS-X3 Puzzle lleva el pasado al futuro. Esta zapatilla cuenta con una amortiguación mejorada para un ajuste más cómodo y elegante.",
+        "sizes": [36, 37, 38, 39, 40, 41, 42, 43],
+        "stock": 3
+    },
+    {
+        "id": "4",
+        "product_type": "sneaker",
+        "name": "New Balance 997H",
+        "price": 100,
+        "image": "new-balance-997.png",
+        "brand": "New Balance",
+        "description": "Inspirada en el diseño clásico 997, la New Balance 997H presenta materiales modernos y una entresuela de espuma ligera para una comodidad superior. Esta zapatilla es perfecta para el uso diario y el estilo urbano.",
+        "sizes": [38, 39, 40, 41, 42, 43, 44, 45],
+        "stock": 0
+    },
+    {
+        "id": "5",
+        "product_type": "sneaker",
+        "name": "Converse Chuck Taylor All Star",
+        "price": 60,
+        "image": "converse-chuck.png",
+        "brand": "Converse",
+        "description": "Un verdadero clásico, el Converse Chuck Taylor All Star ha permanecido como un elemento básico del estilo casual durante décadas. Su icupper de lona icónica y su suela de goma lo convierten en una elección atemporal para los amantes de las zapatillas.",
+        "sizes": [35, 36, 37, 38, 39, 40, 41, 42, 43],
+        "stock": 8
+    },
+    {
+        "id": "6",
+        "product_type": "sneaker",
+        "name": "Vans Old Skool",
+        "price": 85,
+        "image": "vans-old-skool.png",
+        "brand": "Vans",
+        "description": "El Vans Old Skool es un símbolo de la cultura del skate y el estilo urbano. Con su duradera parte superior de gamuza y lona y su suela waffle característica, es imprescindible para los entusiastas de las zapatillas.",
+        "sizes": [36, 37, 38, 39, 40, 41, 42, 43, 44],
+        "stock": 7
+    },
+    {
+        "id": "7",
+        "product_type": "sneaker",
+        "name": "Reebok Club C 85",
+        "price": 60,
+        "image": "reebok-club-c.png",
+        "brand": "Reebok",
+        "description": "El Reebok Club C 85 trae el estilo vintage de la cancha de tenis a la moda moderna. Con una parte superior de cuero suave y una entresuela EVA cómoda, esta zapatilla ofrece estilo y soporte.",
+        "sizes": [37, 38, 39, 40, 41, 42, 43, 44, 45],
+        "stock": 10
+    },
+    {
+        "id": "8",
+        "product_type": "sneaker",
+        "name": "Asics Gel-Lyte III",
+        "price": 110,
+        "image": "asics-gel.png",
+        "brand": "Asics",
+        "description": "El Asics Gel-Lyte III es conocido por su diseño de lengua dividida y comodidad excepcional. Esta zapatilla ofrece un equilibrio perfecto entre estilo retro y rendimiento de vanguardia.",
+        "sizes": [38, 39, 40, 41, 42, 43, 44, 45],
+        "stock": 6
+    },
+    {
+        "id": "9",
+        "product_type": "sneaker",
+        "name": "Jordan 1 Retro High OG",
+        "price": 190,
+        "image": "jordan-1-high-og.png",
+        "brand": "Jordan",
+        "description": "Un símbolo de la historia del baloncesto y la moda urbana, el Jordan 1 Retro High OG ofrece un diseño atemporal y materiales premium. Con amortiguación Air-Sole, estas zapatillas son tan cómodas como elegantes.",
+        "sizes": [39, 40, 41, 42, 43, 44, 45, 46],
+        "stock": 4
+    },
+    {
+        "id": "10",
+        "product_type": "sneaker",
+        "name": "Under Armour HOVR Phantom 2",
+        "price": 50,
+        "image": "under-phantom.png",
+        "brand": "Under Armour",
+        "description": "El Under Armour HOVR Phantom 2 está diseñado para la comodidad y el rendimiento. Con amortiguación HOVR y una parte superior de tejido transpirable, estas zapatillas ofrecen un ajuste perfecto para cualquier actividad.",
+        "sizes": [38, 39, 40, 41, 42, 43, 44, 45],
+        "stock": 12
+    },
+    {
+        "id": "11",
+        "product_type": "sneaker",
+        "name": "Nike React Infinity Run",
+        "price": 160,
+        "image": "nike-infinity-run.png",
+        "brand": "Nike",
+        "description": "La Nike React Infinity Run es ideal para corredores que buscan una mayor comodidad y soporte. Con una amortiguación React y una parte superior de malla, ofrece un ajuste ceñido y una sensación ligera.",
+        "sizes": [39, 40, 41, 42, 43],
+        "stock": 10
+    },
+    {
+        "id": "12",
+        "product_type": "sneaker",
+        "name": "Adidas Ultraboost 21",
+        "price": 180,
+        "image": "adidas-ultraboost-21.png",
+        "brand": "Adidas",
+        "description": "El Adidas Ultraboost 21 es conocido por su comodidad excepcional y su estilo moderno. Con una parte superior Primeknit y una entresuela Boost, estas zapatillas son perfectas para cualquier actividad diaria.",
+        "sizes": [38, 39, 40, 41, 42, 43, 44],
+        "stock": 8
+    },
+    {
+        "id": "13",
+        "product_type": "sneaker",
+        "name": "Puma Future Rider",
+        "price": 100,
+        "image": "puma-future-rider.png",
+        "brand": "Puma",
+        "description": "La Puma Future Rider es una combinación de estilo retro y tecnología moderna. Con su diseño ligero y suela de goma, estas zapatillas son ideales para un look casual y deportivo.",
+        "sizes": [37, 38, 39, 40, 41],
+        "stock": 5
+    },
+    {
+        "id": "14",
+        "product_type": "sneaker",
+        "name": "New Balance 574",
+        "price": 85,
+        "image": "new-balance-574.png",
+        "brand": "New Balance",
+        "description": "La New Balance 574 es un clásico que combina un estilo atemporal con comodidad. Con una parte superior de ante y malla, estas zapatillas son perfectas para un look casual y relajado.",
+        "sizes": [36, 37, 38, 39, 40, 41, 42],
+        "stock": 0
+    },
+    {
+        "id": "15",
+        "product_type": "sneaker",
+        "name": "Hoka One One Bondi 7",
+        "price": 160,
+        "image": "hoka-bondi-7.png",
+        "brand": "Hoka One One",
+        "description": "El Hoka One One Bondi 7 es conocido por su máxima amortiguación y confort. Con su diseño suave y ligero, estas zapatillas son perfectas para correr largas distancias o simplemente para un uso diario.",
+        "sizes": [39, 40, 41, 42, 43, 44],
+        "stock": 6
+    }
+]

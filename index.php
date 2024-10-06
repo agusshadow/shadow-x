@@ -1,30 +1,18 @@
 <?php 
 
-$rutas_permitidas = [
-  'inicio' => [
-    'title' => 'Inicio',
-  ],
-  'listado' => [
-    'title' => 'Productos',
-  ],
-  'contacto' => [
-    'title' => 'Contacto',
-  ],
-  'detalle-producto' => [
-    'title' => 'Detalle Producto',
-  ],
-  '404' => [
-    'title' => 'Pagina no encontrada'
-  ],
-];
+include_once './routes/routes.php';
+require_once './classes/Brand.php';
 
-$vista = isset($_GET['sec']) ? $_GET['sec'] : 'inicio';
+$view = isset($_GET['sec']) ? $_GET['sec'] : 'home';
 
-if (!isset($rutas_permitidas[$vista])) {
-  $vista = '404';
+if (!isset($routes[$view])) {
+    $view = '404';
 }
 
-$vista_seleccionada = $rutas_permitidas[$vista];
+$selected_view = $routes[$view];
+
+$brands = (new Brand())->getBrands();
+
 
 ?>
 
@@ -41,8 +29,8 @@ $vista_seleccionada = $rutas_permitidas[$vista];
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/estilos.css">
-    <title><?= $vista_seleccionada['title'] ?></title>
+    <link rel="stylesheet" href="css/styles.css">
+    <title><?= $selected_view['title'] ?></title>
 </head>
 <body>
 
@@ -50,24 +38,37 @@ $vista_seleccionada = $rutas_permitidas[$vista];
 
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-success">
             <div class="container">
-              <a class="navbar-brand logo navbar-item" href="index.php?s=inicio">shadow x</a>
+              <a class="navbar-brand logo navbar-item" href="index.php?sec=home">shadow x</a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
               <div class="collapse navbar-collapse navbar-item" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto ms-2 mb-2 mb-lg-0">
                   <li class="nav-item dropdown">
-                    <a href="index.php?sec=listado" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Zapatillas
-                    </a>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item text-success" href="index.php?sec=listado">Nike</a></li>
-                      <li><a class="dropdown-item text-success" href="index.php?sec=listado">Adidas</a></li>
-                      <li><a class="dropdown-item text-success" href="index.php?sec=listado">Asics</a></li>
-                    </ul>
-                </li>
+                      <a href="index.php?sec=sneaker-list" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Zapatillas
+                      </a>
+                      <ul class="dropdown-menu">
+                        <li>
+                          <a class="dropdown-item text-success" href="index.php?sec=sneaker-list">Ver todas</a>
+                        </li>
+                        <li>
+                          <hr class="dropdown-divider">
+                        </li>
+                        <?php foreach ($brands as $brand) { ?>
+                            <li>
+                                <a class="dropdown-item text-success" href="index.php?sec=sneaker-list&brand=<?= $brand->getName() ?>">
+                                    <?= $brand->getName(); ?>
+                                </a>
+                            </li>
+                        <?php }; ?>
+                      </ul>
+                  </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="index.php?sec=contacto">Contacto</a>
+                      <a class="nav-link" href="index.php?sec=contact">Contacto</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="index.php?sec=student-data">Datos del alumno</a>
                   </li>
                 </ul>
               </div>
@@ -75,13 +76,13 @@ $vista_seleccionada = $rutas_permitidas[$vista];
           </nav>
     </header>
     
-    <main class="pt-5 mt-2">
+    <main class="py-5 my-5">
         <?php 
 
-        if (file_exists('vistas/' . $vista . '.php')) {
-          require_once __DIR__ . '/vistas/' . $vista . '.php';
+        if (file_exists('views/' . $view . '.php')) {
+          require_once __DIR__ . '/views/' . $view . '.php';
         } else {
-          require_once __DIR__ . '/vistas/404.php';
+          require_once __DIR__ . '/views/404.php';
         }
         
         ?>

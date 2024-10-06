@@ -1,0 +1,42 @@
+[
+    {
+        "id": "1",
+        "name": "Nike"
+    },
+    {
+        "id": "2",
+        "name": "Adidas"
+    },
+    {
+        "id": "3",
+        "name": "Puma"
+    },
+    {
+        "id": "4",
+        "name": "New Balance"
+    },
+    {
+        "id": "5",
+        "name": "Converse"
+    },
+    {
+        "id": "6",
+        "name": "Vans"
+    },
+    {
+        "id": "7",
+        "name": "Reebok"
+    },
+    {
+        "id": "8",
+        "name": "Asics"
+    },
+    {
+        "id": "9",
+        "name": "Jordan"
+    },
+    {
+        "id": "10",
+        "name": "Under Armour"
+    }
+]
