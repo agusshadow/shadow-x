@@ -1,18 +1,11 @@
 <?php 
 
-include_once './routes/routes.php';
-require_once './classes/Brand.php';
+require_once "functions/autoload.php";
 
-$view = isset($_GET['sec']) ? $_GET['sec'] : 'home';
+$view = View::validate($_GET['sec'] ?? 'home');
 
-if (!isset($routes[$view])) {
-    $view = '404';
-}
-
-$selected_view = $routes[$view];
-
-$brands = (new Brand())->getBrands();
-
+Auth::verify($view->getRestricted());
+$userData = $_SESSION['user'] ?? false;
 
 ?>
 
@@ -31,62 +24,57 @@ $brands = (new Brand())->getBrands();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="icon" type="image" href="logo.ico">
-    <title><?= $selected_view['title'] ?></title>
+    <title><?= $view->getTitle() ?></title>
 </head>
 <body>
 
-    <header>
-
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-success">
-            <div class="container">
-              <a class="navbar-brand logo navbar-item" href="index.php?sec=home">shadow x</a>
+  <header>
+      <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-success">
+          <div class="container">
+              <h1 class="m-unset">
+                  <a class="navbar-brand logo navbar-item my-auto" href="index.php?sec=home">shadow x</a>
+              </h1>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                  <span class="navbar-toggler-icon"></span>
               </button>
               <div class="collapse navbar-collapse navbar-item" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto ms-2 mb-2 mb-lg-0">
-                  <li class="nav-item dropdown">
-                      <a href="index.php?sec=sneaker-list" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          Zapatillas
-                      </a>
-                      <ul class="dropdown-menu">
-                        <li>
-                          <a class="dropdown-item text-success" href="index.php?sec=sneaker-list">Ver todas</a>
-                        </li>
-                        <li>
-                          <hr class="dropdown-divider">
-                        </li>
-                        <?php foreach ($brands as $brand) { ?>
-                            <li>
-                                <a class="dropdown-item text-success" href="index.php?sec=sneaker-list&brand=<?= $brand->getName() ?>">
-                                    <?= $brand->getName(); ?>
-                                </a>
-                            </li>
-                        <?php }; ?>
-                      </ul>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="index.php?sec=contact">Contacto</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="index.php?sec=student-data">Datos del alumno</a>
-                  </li>
-                </ul>
+                  <ul class="navbar-nav me-auto ms-2 mb-2 mb-lg-0">
+                      <li class="nav-item">
+                          <a class="nav-link" href="index.php?sec=sneaker-list">Zapatillas</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="index.php?sec=shipments">Envios</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="index.php?sec=contact">Contacto</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="index.php?sec=student-data">Datos del alumno</a>
+                      </li>
+                  </ul>
+                  <ul class="ms-auto mb-2 mb-lg-0"> 
+                      <li class="nav-item <?= $userData ? "d-none" : "" ?>">
+                          <a class="nav-link fw-bold" href="index.php?sec=login">Iniciar sesion</a>
+                      </li>
+                      <li class="nav-item <?= $userData ? "" : "d-none" ?>">
+                          <a class="nav-link fw-bold" href="admin/actions/auth/logout.php">(<?= $userData["name"] ?>) Cerrar sesion <span class="fw-light"></span></a>
+                      </li>
+                  </ul>
               </div>
-            </div>
-          </nav>
-    </header>
+          </div>
+      </nav>
+  </header>
+
     
     <main class="py-5 my-5">
-        <?php 
-
-        if (file_exists('views/' . $view . '.php')) {
-          require_once __DIR__ . '/views/' . $view . '.php';
+      <?php
+        $filePath = "./views/{$view->getName()}.php";
+        if (file_exists($filePath)) {
+            require_once $filePath;
         } else {
-          require_once __DIR__ . '/views/404.php';
+            require_once "./views/404.php";
         }
-        
-        ?>
+      ?>
     </main>
 
     <div class="container-fluid p-0">

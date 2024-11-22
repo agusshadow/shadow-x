@@ -1,0 +1,14 @@
+USER:
+agus-user@hotmail.com
+agus-user
+passwordUser123
+
+ADMIN:
+agus-admin@hotmail.com
+agus-admin
+passwordAdmin123
+
+SUPERADMIN:
+agus-superadmin@hotmail.com
+agus-superadmin
+passwordSuperadmin123

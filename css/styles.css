@@ -20,10 +20,8 @@
 }
 
 .navbar a:hover {
-    color: rgb(226, 225, 225);;
+    color: rgb(226, 225, 225);
 }
-
-
 
 footer ul, li {
     list-style: none;

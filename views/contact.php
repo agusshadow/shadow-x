@@ -1,5 +1,5 @@
-<section class="container py-5">
-  <h2 class="mb-4">Contacto</h2>
+<section class="container">
+  <h2 class="pt-4 pt-md-5 mb-5 text-success fw-bold">Contacto</h2>
   <p>Estamos aquí para ayudarte ¿Tienes alguna pregunta o necesitas ayuda con tu pedido? Nuestro equipo está disponible para brindarte la mejor atención. Puedes contactarnos a través de email, redes sociales o por teléfono. También puedes visitar nuestra tienda física para vivir la experiencia Shadow X en persona.</p>
   <div class="accordion" id="accordionExample">
     <div class="accordion-item">
@@ -40,12 +40,9 @@
     </div>
   </div>
 </section>
-
-<section class="container pb-5">
-
+<section class="container pt-5">
   <h2 class="py-2 mb-4">Si tenes alguna duda contactate con nosotros!</h2>
-
-  <form action="./process-email.php" method="GET">
+  <form action="./actions/process-email.php" method="GET">
     <div class="mb-3">
       <label for="name" class="form-label">Nombre</label>
       <input type="text" class="form-control" id="name" name="name">
@@ -62,5 +59,4 @@
       <button type="submit" class="btn btn-success mb-3 px-5">Enviar</button>
     </div>
   </form>
-
 </section>

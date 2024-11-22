@@ -1,6 +1,6 @@
 <?php
 
-class Brand {
+class Category {
     private $id;
     private $name;
     private $description;
@@ -8,103 +8,107 @@ class Brand {
     private $updated_at;
 
     /**
-     * Retorna todas las marcas
-     * @return Brand[] Retorna todas las marcas o un array vacio si no se encuentran
+     * Retorna todas las categorías
+     * @return Category[] Retorna todas las categorías
      */
     public static function getAll(): array {
         $conexion = DbConnection::getConexion();
-        $query = "SELECT * FROM brands";
+        $query = "SELECT * FROM categories";
 
         try {
             $PDOStatement = $conexion->prepare($query);
             $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
             $PDOStatement->execute();
 
-            $brands = $PDOStatement->fetchAll();
+            $categories = $PDOStatement->fetchAll();
 
-            return $brands ?: [];
+            return $categories ?: [];
         } catch (PDOException $e) {
+            error_log("Error al consultar las categorías: " . $e->getMessage());
             return [];
         }
     }
 
     /** 
-     * Retorna un marca específico por ID
-     * @param int $id ID de la marca
-     * @return Brand|null Retorna la marca o null si no se encuentra
+     * Retorna una categoría específica por ID
+     * @param int $id ID de la categoría
+     * @return Category|null Retorna la categoría o null si no se encuentra
      */
-    public static function getById($id): ?Brand {
+    public static function getById($id): ?Category {
         $conexion = DbConnection::getConexion();
-        $query = "SELECT * FROM brands WHERE id = ?";
+        $query = "SELECT * FROM categories WHERE id = ?";
 
         try {
             $PDOStatement = $conexion->prepare($query);
             $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
             $PDOStatement->execute([$id]);
     
-            $brand = $PDOStatement->fetch();
+            $category = $PDOStatement->fetch();
     
-            return $brand ?: null;
+            return $category;
         } catch (PDOException $e) {
             return null;
-        } 
+        }
     }
 
     /** 
-     * Crea una nueva marca
-     * @param string $name Nombre de la marca
-     * @param string $description Descripción de la marca
-     * @return bool Retorna true si la marca se creó correctamente, false si hubo un error
+     * Crea una nueva categoria
+     * @param string $name Nombre de la categoria
+     * @param string $description Descripción de la categoria
+     * @return bool Retorna verdadero si la categoria se creó correctamente
      */
     public static function create($name, $description): bool {
         $conexion = DbConnection::getConexion();
-        $query = "INSERT INTO brands (name, description, created_at, updated_at) VALUES (?, ?, NOW(), NOW())";
+        $query = "INSERT INTO categories (name, description, created_at, updated_at) VALUES (?, ?, NOW(), NOW())";
 
         try {
             $PDOStatement = $conexion->prepare($query);
             $PDOStatement->execute([$name, $description]);
 
-            return true;
+            return $conexion->lastInsertId();
         } catch (PDOException $e) {
-            return false;
+            return null;
         }
     }
 
-     /**
-     * Edita una marca existente
-     * @param int $id ID de la marca a editar
-     * @param string $name Nombre de la marca
-     * @param string $description Descripción de la marca
-     * @return bool Retorna true si se actualizó la marca correctamente, false si hubo un error
+      /**
+     * Edita una categoria existente
+     * @param int $id ID de la categoria a editar
+     * @param string $name Nombre de la categoria
+     * @param string $description Descripción de la categoria
+     * @return bool Retorna TRUE si se actualizó la categoria correctamente, FALSE si hubo un error
      */
     public static function edit($id, $name, $description): bool {
         $conexion = DbConnection::getConexion();
-        $query = "UPDATE brands SET name = ?, description = ?, updated_at = NOW() WHERE id = ?";
+        $query = "UPDATE categories SET name = ?, description = ?, updated_at = NOW() WHERE id = ?";
 
         try {
             $PDOStatement = $conexion->prepare($query);
             $PDOStatement->execute([$name, $description, $id]);
             return true;
         } catch (PDOException $e) {
+            error_log("Error al editar la categoria: " . $e->getMessage());
             return false;
         }
     }
 
-     /**
-     * Elimina una marca por ID.
-     * @param int $id ID de la marca a eliminar
-     * @return bool Retorna true si se eliminó correctamente, false si hubo un error
+    /**
+     * Elimina una categoria por ID.
+     * @param int $id ID de la categoria a eliminar
+     * @return bool Retorna true si se eliminó correctamente, false en caso contrario
      */
     public static function delete($id): bool {
         $conexion = DbConnection::getConexion();
-        $query = "DELETE FROM brands WHERE id = ?";
+        $query = "DELETE FROM categories WHERE id = ?";
 
         try {
             $PDOStatement = $conexion->prepare($query);
             $PDOStatement->execute([$id]);
 
+            // Si la consulta afecta filas, significa que la marca fue eliminada
             return $PDOStatement->rowCount() > 0;
         } catch (PDOException $e) {
+            error_log("Error al eliminar la categoria: " . $e->getMessage());
             return false;
         }
     }
@@ -113,7 +117,7 @@ class Brand {
 
     /** 
      * Asigna el valor a $id
-     * @param int $value ID de la marca
+     * @param int $value ID de la categoría
      */
     public function setId($value): void {
         $this->id = $value;
@@ -121,7 +125,7 @@ class Brand {
 
     /** 
      * Asigna el valor a $name
-     * @param string $value Nombre de la marca
+     * @param string $value Nombre de la categoría
      */
     public function setName($value): void {
         $this->name = $value;
@@ -129,7 +133,7 @@ class Brand {
 
     /** 
      * Asigna el valor a $description
-     * @param string $value Descripción de la marca
+     * @param string $value Descripción de la categoría
      */
     public function setDescription($value): void {
         $this->description = $value;
@@ -155,7 +159,7 @@ class Brand {
 
     /** 
      * Obtiene el valor de $id
-     * @return int ID de la marca
+     * @return int ID de la categoría
      */
     public function getId(): int {
         return $this->id;
@@ -163,7 +167,7 @@ class Brand {
 
     /** 
      * Obtiene el valor de $name
-     * @return string Nombre de la marca
+     * @return string Nombre de la categoría
      */
     public function getName(): string {
         return $this->name;
@@ -171,7 +175,7 @@ class Brand {
 
     /** 
      * Obtiene el valor de $description
-     * @return string Descripción de la marca
+     * @return string Descripción de la categoría
      */
     public function getDescription(): string {
         return $this->description;
