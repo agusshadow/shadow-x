@@ -97,21 +97,19 @@ class Category {
      * @param int $id ID de la categoria a eliminar
      * @return bool Retorna true si se eliminó correctamente, false en caso contrario
      */
-    public static function delete($id): bool {
+    public static function delete(int $id): bool {
         $conexion = DbConnection::getConexion();
         $query = "DELETE FROM categories WHERE id = ?";
 
         try {
-            $PDOStatement = $conexion->prepare($query);
-            $PDOStatement->execute([$id]);
-
-            // Si la consulta afecta filas, significa que la marca fue eliminada
-            return $PDOStatement->rowCount() > 0;
+            $stmt = $conexion->prepare($query);
+            return $stmt->execute([$id]);
         } catch (PDOException $e) {
-            error_log("Error al eliminar la categoria: " . $e->getMessage());
-            return false;
+            // Reenviamos la excepción para poder capturarla desde afuera
+            throw new Exception($e->getMessage(), (int)$e->getCode());
         }
     }
+
 
     // Setters
 

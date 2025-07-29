@@ -105,7 +105,8 @@ class Brand {
 
             return $PDOStatement->rowCount() > 0;
         } catch (PDOException $e) {
-            return false;
+            // Reenviamos la excepción para que el archivo delete.php la maneje
+            throw new Exception($e->getMessage(), (int)$e->getCode());
         }
     }
 

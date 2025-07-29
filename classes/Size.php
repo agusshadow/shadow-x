@@ -78,12 +78,14 @@ class Size {
 
         try {
             $stmt = $conexion->prepare($query);
-            return $stmt->execute([$id]);
+            $stmt->execute([$id]);
+
+            return $stmt->rowCount() > 0;
         } catch (PDOException $e) {
-            error_log("Error al eliminar el talle: " . $e->getMessage());
-            return false;
+            throw new Exception($e->getMessage(), (int)$e->getCode());
         }
     }
+
         
     // Setters
 
