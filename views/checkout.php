@@ -106,6 +106,12 @@ document.addEventListener('DOMContentLoaded', function () {
     const paymentSelect = document.getElementById('paymentMethod');
     const creditCardFields = document.getElementById('creditCardFields');
     const transferFields = document.getElementById('transferFields');
+    const form = document.querySelector('form');
+
+    const cardNumber = document.getElementById('cardNumber');
+    const cardName = document.getElementById('cardName');
+    const cardExpiry = document.getElementById('cardExpiry');
+    const cardCvv = document.getElementById('cardCvv');
 
     function togglePaymentFields() {
         if (paymentSelect.value === 'credit_card') {
@@ -119,5 +125,22 @@ document.addEventListener('DOMContentLoaded', function () {
 
     paymentSelect.addEventListener('change', togglePaymentFields);
     togglePaymentFields();
+
+    form.addEventListener('submit', function (e) {
+        if (paymentSelect.value === 'credit_card') {
+            const missingFields = [];
+
+            if (!cardNumber.value.trim()) missingFields.push('Número de tarjeta');
+            if (!cardName.value.trim()) missingFields.push('Nombre en la tarjeta');
+            if (!cardExpiry.value.trim()) missingFields.push('Fecha de expiración');
+            if (!cardCvv.value.trim()) missingFields.push('CVV');
+
+            if (missingFields.length > 0) {
+                e.preventDefault();
+                alert('Por favor completá los siguientes campos para pagar con tarjeta:\n\n' + missingFields.join('\n'));
+            }
+        }
+    });
 });
 </script>
+
