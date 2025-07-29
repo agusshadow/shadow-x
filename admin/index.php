@@ -43,10 +43,16 @@ $userData = $_SESSION['user'] ?? false;
                             <a class="nav-link" href="index.php?sec=admin-sneakers">Zapatillas</a>
                         </li>
                         <li class="nav-item <?= $userData ? "" : "d-none" ?>">
+                            <a class="nav-link" href="index.php?sec=admin-sizes">Talles</a>
+                        </li>
+                        <li class="nav-item <?= $userData ? "" : "d-none" ?>">
                             <a class="nav-link" href="index.php?sec=admin-brands">Marcas</a>
                         </li>
                         <li class="nav-item <?= $userData ? "" : "d-none" ?>">
                             <a class="nav-link" href="index.php?sec=admin-categories">Categorias</a>
+                        </li>
+                        <li class="nav-item <?= $userData ? "" : "d-none" ?>">
+                            <a class="nav-link" href="index.php?sec=admin-orders">Ordenes</a>
                         </li>
                     </ul>
                     <ul class="ms-auto mb-2 mb-lg-0"> 

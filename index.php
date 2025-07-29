@@ -28,43 +28,62 @@ $userData = $_SESSION['user'] ?? false;
 </head>
 <body>
 
-  <header>
-      <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-success">
-          <div class="container">
-              <h1 class="m-unset">
-                  <a class="navbar-brand logo navbar-item my-auto" href="index.php?sec=home">shadow x</a>
-              </h1>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse navbar-item" id="navbarSupportedContent">
-                  <ul class="navbar-nav me-auto ms-2 mb-2 mb-lg-0">
-                      <li class="nav-item">
-                          <a class="nav-link" href="index.php?sec=sneaker-list">Zapatillas</a>
-                      </li>
-                      <li class="nav-item">
-                          <a class="nav-link" href="index.php?sec=shipments">Envios</a>
-                      </li>
-                      <li class="nav-item">
-                          <a class="nav-link" href="index.php?sec=contact">Contacto</a>
-                      </li>
-                      <li class="nav-item">
-                          <a class="nav-link" href="index.php?sec=student-data">Datos del alumno</a>
-                      </li>
-                  </ul>
-                  <ul class="ms-auto mb-2 mb-lg-0"> 
-                      <li class="nav-item <?= $userData ? "d-none" : "" ?>">
-                          <a class="nav-link fw-bold" href="index.php?sec=login">Iniciar sesion</a>
-                      </li>
-                      <li class="nav-item <?= $userData ? "" : "d-none" ?>">
-                          <a class="nav-link fw-bold" href="admin/actions/auth/logout.php">(<?= $userData["name"] ?>) Cerrar sesion <span class="fw-light"></span></a>
-                      </li>
-                  </ul>
-              </div>
-          </div>
-      </nav>
-  </header>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-success">
+            <div class="container">
+                <h1 class="m-unset">
+                    <a class="navbar-brand logo navbar-item my-auto" href="index.php?sec=home">shadow x</a>
+                </h1>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse navbar-item" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto ms-2 mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php?sec=sneaker-list">Zapatillas</a>
+                        </li>
+                        <li class="nav-item <?= $userData ? "" : "d-none" ?>">
+                            <a class="nav-link" href="index.php?sec=orders">Ordenes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php?sec=shipments">Envios</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php?sec=contact">Contacto</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php?sec=student-data">Datos del alumno</a>
+                        </li>
+                    </ul>
 
+                   <ul class="navbar-nav ms-auto mb-2 mb-lg-0"> 
+                        <?php if ($userData): ?>
+                            <li class="nav-item">
+                                <a class="nav-link fw-bold" href="index.php?sec=cart">
+                                    Carrito
+                                    <?php if (isset($_SESSION['cart']) && count($_SESSION['cart']) > 0): ?>
+                                        <span class="badge bg-light text-dark"><?= count($_SESSION['cart']) ?></span>
+                                    <?php endif; ?>
+                                </a>
+                            </li>
+                        <?php endif; ?>
+
+                        <li class="nav-item <?= $userData ? "d-none" : "" ?>">
+                            <a class="btn btn-outline-light custom-login-btn ms-2" href="index.php?sec=login">
+                                Iniciar sesión
+                            </a>
+                        </li>
+
+                        <li class="nav-item <?= $userData ? "" : "d-none" ?>">
+                            <a class="btn btn-outline-light custom-login-btn ms-2" href="admin/actions/auth/logout.php">
+                                (<?= $userData["name"] ?>) Cerrar sesión
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
     
     <main class="py-5 my-5">
       <?php

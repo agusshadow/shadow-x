@@ -49,7 +49,42 @@ class Size {
             return null;
         }
     }
-    
+
+    /**
+     * Crea un nuevo talle en la base de datos
+     * 
+     * @param float $size El valor del talle (por ejemplo, 42.5)
+     * @param string $gender El género del talle ('Men' o 'Women')
+     * @return int ID del talle creado
+     * @throws Exception Si ocurre un error en la creación
+     */
+    public static function create(float $size, string $gender): int {
+        $conexion = DbConnection::getConexion();
+        $query = "INSERT INTO sizes (size, gender) VALUES (?, ?)";
+
+        try {
+            $stmt = $conexion->prepare($query);
+            $stmt->execute([$size, $gender]);
+            return (int)$conexion->lastInsertId();
+        } catch (PDOException $e) {
+            error_log("Error al crear talle: " . $e->getMessage());
+            throw new Exception("No se pudo crear el talle. Error: " . $e->getMessage());
+        }
+    }
+
+    public static function delete(int $id): bool {
+        $conexion = DbConnection::getConexion();
+        $query = "DELETE FROM sizes WHERE id = ?";
+
+        try {
+            $stmt = $conexion->prepare($query);
+            return $stmt->execute([$id]);
+        } catch (PDOException $e) {
+            error_log("Error al eliminar el talle: " . $e->getMessage());
+            return false;
+        }
+    }
+        
     // Setters
 
     /** 

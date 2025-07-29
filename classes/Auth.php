@@ -16,6 +16,7 @@ class Auth {
 
             if (password_verify($password, $user->getPassword())) {
 
+                $datosLogin['id'] = $user->getId();
                 $datosLogin['email'] = $user->getEmail();
                 $datosLogin['name'] = $user->getName();
                 $datosLogin['role'] = $user->getRole();

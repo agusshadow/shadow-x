@@ -3,6 +3,9 @@ $categories = (new Category())->getAll();
 ?>
 
 <section class="container">
+    <div>
+        <?= Alert::getAlerts(); ?>
+    </div>
     <div class="d-flex align-items-center justify-content-between">
         <h2 class="pt-4 pt-md-5 mb-5 text-success fw-bold">
             Administrar categorias

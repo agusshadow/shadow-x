@@ -14,7 +14,7 @@ $category = Category::getById($categoryId);
         </div>
         <div class="mb-3">
             <label for="description" class="form-label">Descripción</label>
-            <textarea class="form-control" id="description" name="description" rows="3" required><?= ($category->getDescription() ?></textarea>
+            <textarea class="form-control" id="description" name="description" rows="3" required><?= ($category->getDescription()); ?></textarea>
         </div>
         <div class="mb-3">
             <small class="d-block">Fecha de creacion: <?= $category->getCreatedAt()?></small>
