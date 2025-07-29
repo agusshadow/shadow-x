@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Nov 22, 2024 at 02:15 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 29-07-2025 a las 02:21:06
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `shadowx`
+-- Base de datos: `shadowx`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `brands`
+-- Estructura de tabla para la tabla `brands`
 --
 
 CREATE TABLE `brands` (
@@ -36,7 +36,7 @@ CREATE TABLE `brands` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `brands`
+-- Volcado de datos para la tabla `brands`
 --
 
 INSERT INTO `brands` (`id`, `name`, `description`, `created_at`, `updated_at`) VALUES
@@ -54,7 +54,7 @@ INSERT INTO `brands` (`id`, `name`, `description`, `created_at`, `updated_at`) V
 -- --------------------------------------------------------
 
 --
--- Table structure for table `categories`
+-- Estructura de tabla para la tabla `categories`
 --
 
 CREATE TABLE `categories` (
@@ -66,17 +66,67 @@ CREATE TABLE `categories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `categories`
+-- Volcado de datos para la tabla `categories`
 --
 
 INSERT INTO `categories` (`id`, `name`, `description`, `created_at`, `updated_at`) VALUES
-(1, 'Running', 'Zapatillas para correr', '2024-11-02 13:02:00', '2024-11-02 13:02:00'),
+(1, 'Running', 'Zapatillas para correr', '2024-11-02 13:02:00', '2025-07-27 14:14:48'),
 (2, 'Lifestyle', 'Zapatillas de uso diario', '2024-11-02 13:02:00', '2024-11-02 13:02:00');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `roles`
+-- Estructura de tabla para la tabla `orders`
+--
+
+CREATE TABLE `orders` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `full_name` varchar(150) DEFAULT NULL,
+  `total_amount` decimal(10,2) NOT NULL DEFAULT 0.00,
+  `status` enum('pending','paid','shipped','completed','cancelled') NOT NULL DEFAULT 'pending',
+  `payment_method` enum('transfer','credit_card') NOT NULL,
+  `phone` varchar(50) DEFAULT NULL,
+  `city` varchar(100) DEFAULT NULL,
+  `postal_code` varchar(20) DEFAULT NULL,
+  `shipping_address` varchar(255) DEFAULT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `orders`
+--
+
+INSERT INTO `orders` (`id`, `user_id`, `full_name`, `total_amount`, `status`, `payment_method`, `phone`, `city`, `postal_code`, `shipping_address`, `created_at`, `updated_at`) VALUES
+(2, 1, 'Agustin Gonzalez', 350.00, 'pending', 'credit_card', '01159785325', 'Martínez', '1640', '1370 GENERAL PIRAN', '2025-07-25 14:14:06', '2025-07-25 14:14:06');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `order_sneakers`
+--
+
+CREATE TABLE `order_sneakers` (
+  `id` int(11) NOT NULL,
+  `order_id` int(11) NOT NULL,
+  `sneaker_id` int(11) NOT NULL,
+  `size_id` int(11) NOT NULL,
+  `price` decimal(10,2) NOT NULL,
+  `quantity` int(11) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `order_sneakers`
+--
+
+INSERT INTO `order_sneakers` (`id`, `order_id`, `sneaker_id`, `size_id`, `price`, `quantity`) VALUES
+(3, 2, 32, 1, 350.00, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `roles`
 --
 
 CREATE TABLE `roles` (
@@ -86,7 +136,7 @@ CREATE TABLE `roles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `roles`
+-- Volcado de datos para la tabla `roles`
 --
 
 INSERT INTO `roles` (`id`, `name`, `active`) VALUES
@@ -97,7 +147,7 @@ INSERT INTO `roles` (`id`, `name`, `active`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sizes`
+-- Estructura de tabla para la tabla `sizes`
 --
 
 CREATE TABLE `sizes` (
@@ -107,7 +157,7 @@ CREATE TABLE `sizes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `sizes`
+-- Volcado de datos para la tabla `sizes`
 --
 
 INSERT INTO `sizes` (`id`, `size`, `gender`) VALUES
@@ -151,7 +201,7 @@ INSERT INTO `sizes` (`id`, `size`, `gender`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sneakers`
+-- Estructura de tabla para la tabla `sneakers`
 --
 
 CREATE TABLE `sneakers` (
@@ -167,7 +217,7 @@ CREATE TABLE `sneakers` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `sneakers`
+-- Volcado de datos para la tabla `sneakers`
 --
 
 INSERT INTO `sneakers` (`id`, `name`, `description`, `price`, `image`, `brand_id`, `category_id`, `created_at`, `updated_at`) VALUES
@@ -190,7 +240,7 @@ INSERT INTO `sneakers` (`id`, `name`, `description`, `price`, `image`, `brand_id
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sneaker_sizes`
+-- Estructura de tabla para la tabla `sneaker_sizes`
 --
 
 CREATE TABLE `sneaker_sizes` (
@@ -200,7 +250,7 @@ CREATE TABLE `sneaker_sizes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `sneaker_sizes`
+-- Volcado de datos para la tabla `sneaker_sizes`
 --
 
 INSERT INTO `sneaker_sizes` (`sneaker_id`, `size_id`, `stock`) VALUES
@@ -595,7 +645,7 @@ INSERT INTO `sneaker_sizes` (`sneaker_id`, `size_id`, `stock`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Estructura de tabla para la tabla `users`
 --
 
 CREATE TABLE `users` (
@@ -609,7 +659,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `users`
+-- Volcado de datos para la tabla `users`
 --
 
 INSERT INTO `users` (`id`, `email`, `name`, `password`, `role_id`, `created_at`, `updated_at`) VALUES
@@ -620,7 +670,7 @@ INSERT INTO `users` (`id`, `email`, `name`, `password`, `role_id`, `created_at`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `views`
+-- Estructura de tabla para la tabla `views`
 --
 
 CREATE TABLE `views` (
@@ -632,7 +682,7 @@ CREATE TABLE `views` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `views`
+-- Volcado de datos para la tabla `views`
 --
 
 INSERT INTO `views` (`id`, `name`, `title`, `active`, `restricted`) VALUES
@@ -658,39 +708,65 @@ INSERT INTO `views` (`id`, `name`, `title`, `active`, `restricted`) VALUES
 (21, 'login', 'Iniciar Sesion', 1, 0),
 (22, 'shipments', 'Envios', 1, 0),
 (23, 'sneakers-by-brand', 'Zapatillas por marca', 1, 0),
-(24, 'sneakers-by-category', 'Zapatillas por categoria', 1, 0);
+(24, 'sneakers-by-category', 'Zapatillas por categoria', 1, 0),
+(26, 'cart', 'Carrito', 1, 1),
+(27, 'checkout', 'Finalizar compra', 1, 1),
+(28, 'checkout-success', 'Compra realizada', 1, 1),
+(29, 'admin-orders', 'Administrar Órdenes', 1, 2),
+(30, 'edit-order', 'Editar Orden', 1, 2),
+(31, 'orders', 'Mis Órdenes', 1, 1),
+(32, 'order-detail', 'Detalle de la orden', 1, 1),
+(35, 'admin-sizes', 'Administrar talles', 1, 2),
+(36, 'create-size', 'Crear talle', 1, 2),
+(37, 'delete-size', 'Editar talle', 1, 2);
 
 --
--- Indexes for dumped tables
+-- Índices para tablas volcadas
 --
 
 --
--- Indexes for table `brands`
+-- Indices de la tabla `brands`
 --
 ALTER TABLE `brands`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `categories`
+-- Indices de la tabla `categories`
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `roles`
+-- Indices de la tabla `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
+-- Indices de la tabla `order_sneakers`
+--
+ALTER TABLE `order_sneakers`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `order_id` (`order_id`),
+  ADD KEY `sneaker_id` (`sneaker_id`),
+  ADD KEY `size_id` (`size_id`);
+
+--
+-- Indices de la tabla `roles`
 --
 ALTER TABLE `roles`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `name` (`name`);
 
 --
--- Indexes for table `sizes`
+-- Indices de la tabla `sizes`
 --
 ALTER TABLE `sizes`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `sneakers`
+-- Indices de la tabla `sneakers`
 --
 ALTER TABLE `sneakers`
   ADD PRIMARY KEY (`id`),
@@ -698,14 +774,14 @@ ALTER TABLE `sneakers`
   ADD KEY `category_id` (`category_id`);
 
 --
--- Indexes for table `sneaker_sizes`
+-- Indices de la tabla `sneaker_sizes`
 --
 ALTER TABLE `sneaker_sizes`
   ADD PRIMARY KEY (`sneaker_id`,`size_id`),
   ADD KEY `size_id` (`size_id`);
 
 --
--- Indexes for table `users`
+-- Indices de la tabla `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
@@ -713,78 +789,104 @@ ALTER TABLE `users`
   ADD KEY `role_id` (`role_id`);
 
 --
--- Indexes for table `views`
+-- Indices de la tabla `views`
 --
 ALTER TABLE `views`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `name` (`name`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT for table `brands`
+-- AUTO_INCREMENT de la tabla `brands`
 --
 ALTER TABLE `brands`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
--- AUTO_INCREMENT for table `categories`
+-- AUTO_INCREMENT de la tabla `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `roles`
+-- AUTO_INCREMENT de la tabla `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT de la tabla `order_sneakers`
+--
+ALTER TABLE `order_sneakers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT de la tabla `roles`
 --
 ALTER TABLE `roles`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `sizes`
+-- AUTO_INCREMENT de la tabla `sizes`
 --
 ALTER TABLE `sizes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
--- AUTO_INCREMENT for table `sneakers`
+-- AUTO_INCREMENT de la tabla `sneakers`
 --
 ALTER TABLE `sneakers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `views`
+-- AUTO_INCREMENT de la tabla `views`
 --
 ALTER TABLE `views`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
--- Constraints for dumped tables
+-- Restricciones para tablas volcadas
 --
 
 --
--- Constraints for table `sneakers`
+-- Filtros para la tabla `orders`
+--
+ALTER TABLE `orders`
+  ADD CONSTRAINT `orders_ibfk_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+--
+-- Filtros para la tabla `order_sneakers`
+--
+ALTER TABLE `order_sneakers`
+  ADD CONSTRAINT `order_sneakers_ibfk_order` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `order_sneakers_ibfk_size` FOREIGN KEY (`size_id`) REFERENCES `sizes` (`id`),
+  ADD CONSTRAINT `order_sneakers_ibfk_sneaker` FOREIGN KEY (`sneaker_id`) REFERENCES `sneakers` (`id`);
+
+--
+-- Filtros para la tabla `sneakers`
 --
 ALTER TABLE `sneakers`
   ADD CONSTRAINT `sneakers_ibfk_1` FOREIGN KEY (`brand_id`) REFERENCES `brands` (`id`),
   ADD CONSTRAINT `sneakers_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`);
 
 --
--- Constraints for table `sneaker_sizes`
+-- Filtros para la tabla `sneaker_sizes`
 --
 ALTER TABLE `sneaker_sizes`
   ADD CONSTRAINT `sneaker_sizes_ibfk_1` FOREIGN KEY (`sneaker_id`) REFERENCES `sneakers` (`id`),
   ADD CONSTRAINT `sneaker_sizes_ibfk_2` FOREIGN KEY (`size_id`) REFERENCES `sizes` (`id`);
 
 --
--- Constraints for table `users`
+-- Filtros para la tabla `users`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`);
