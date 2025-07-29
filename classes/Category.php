@@ -105,7 +105,6 @@ class Category {
             $stmt = $conexion->prepare($query);
             return $stmt->execute([$id]);
         } catch (PDOException $e) {
-            // Reenviamos la excepción para poder capturarla desde afuera
             throw new Exception($e->getMessage(), (int)$e->getCode());
         }
     }

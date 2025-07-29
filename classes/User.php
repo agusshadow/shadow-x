@@ -18,12 +18,10 @@ class User {
     private static function createUserInstance(array $userData): User {
         $user = new self();
 
-        // Asignación de los valores comunes del sneaker
         foreach (self::$createValues as $value) {
             $user->{$value} = $userData[$value];
         }
 
-        // Asignación de la marca y categoría
         $user->role = Role::getById($userData['role_id']);
 
         return $user;

@@ -14,7 +14,7 @@ class Order {
     private string $created_at;
     private string $updated_at;
 
-    private array $items = []; // productos asociados a la orden
+    private array $items = [];
 
     // ======= CREATE =======
     public static function create(array $data, array $items): int {
@@ -208,7 +208,6 @@ class Order {
         }
     }
 
-    // ======= Getters (puedes expandir según necesites) =======
     public function getId(): int {
         return $this->id;
     }
