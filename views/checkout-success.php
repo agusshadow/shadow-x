@@ -60,19 +60,19 @@ $statusLabel = $statusMap[$statusRaw] ?? ucfirst($statusRaw);
         <div class="row">
             <div class="col-md-6 mb-3">
                 <div class="border rounded p-3 h-100">
-                    <p class="mb-1"><strong>ID de orden:</strong> <?= htmlspecialchars($order->getId()) ?></p>
-                    <p class="mb-1"><strong>Nombre completo:</strong> <?= htmlspecialchars($order->getFullName()) ?></p>
-                    <p class="mb-1"><strong>Teléfono:</strong> <?= htmlspecialchars($order->getPhone()) ?></p>
-                    <p class="mb-1"><strong>Ciudad:</strong> <?= htmlspecialchars($order->getCity()) ?></p>
+                    <p class="mb-1"><strong>ID de orden:</strong> <?= $order->getId() ?></p>
+                    <p class="mb-1"><strong>Nombre completo:</strong> <?= $order->getFullName() ?></p>
+                    <p class="mb-1"><strong>Teléfono:</strong> <?= $order->getPhone() ?></p>
+                    <p class="mb-1"><strong>Ciudad:</strong> <?= $order->getCity() ?></p>
                 </div>
             </div>
             <div class="col-md-6 mb-3">
                 <div class="border rounded p-3 h-100">
-                    <p class="mb-1"><strong>Código postal:</strong> <?= htmlspecialchars($order->getPostalCode()) ?></p>
-                    <p class="mb-1"><strong>Dirección de envío:</strong> <?= htmlspecialchars($order->getShippingAddress()) ?></p>
-                    <p class="mb-1"><strong>Método de pago:</strong> <?= htmlspecialchars($paymentMethodLabel) ?></p>
+                    <p class="mb-1"><strong>Código postal:</strong> <?= $order->getPostalCode() ?></p>
+                    <p class="mb-1"><strong>Dirección de envío:</strong> <?= $order->getShippingAddress() ?></p>
+                    <p class="mb-1"><strong>Método de pago:</strong> <?= $paymentMethodLabel ?></p>
                     <p class="mb-1"><strong>Total:</strong> US$ <?= number_format($order->getTotalAmount(), 2) ?></p>
-                    <p class="mb-0"><strong>Estado:</strong> <?= htmlspecialchars($statusLabel) ?></p>
+                    <p class="mb-0"><strong>Estado:</strong> <?= $statusLabel ?></p>
                 </div>
             </div>
         </div>
@@ -84,8 +84,8 @@ $statusLabel = $statusMap[$statusRaw] ?? ucfirst($statusRaw);
             <?php foreach ($order->getItems() as $item): ?>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     <div>
-                        <strong><?= htmlspecialchars($item['sneaker_name']) ?></strong><br>
-                        <small><?= htmlspecialchars($item['size_label']) ?> US - <?= ucfirst(strtolower($item['gender'])) ?></small><br>
+                        <strong><?= $item['sneaker_name'] ?></strong><br>
+                        <small><?= $item['size_label'] ?> US - <?= ucfirst(strtolower($item['gender'])) ?></small><br>
                         <small>Cantidad: <?= (int)$item['quantity'] ?></small>
                     </div>
                     <div>

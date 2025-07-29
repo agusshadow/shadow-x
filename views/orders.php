@@ -23,7 +23,7 @@ $orders = Order::getByUserId($userData['id']);
                     <div class="card shadow-sm h-100">
                         <div class="card-body">
                             <h5 class="card-title mb-3">
-                                Orden #<?= htmlspecialchars($order->getId()) ?>
+                                Orden #<?= $order->getId() ?>
                             </h5>
                             <p class="mb-1">
                                 <strong>Fecha:</strong> <?= date('d/m/Y', strtotime($order->getCreatedAt())) ?>

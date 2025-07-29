@@ -27,7 +27,7 @@ $orders = Order::getAll();
             <?php foreach ($orders as $order): ?>
                 <tr>
                     <td><?= $order->getId() ?></td>
-                    <td><?= htmlspecialchars($order->getFullName()) ?></td>
+                    <td><?= $order->getFullName() ?></td>
                     <td>
                         <?php
                         $paymentMap = [

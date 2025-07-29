@@ -37,13 +37,13 @@ $statusMap = [
             <div class="card shadow-sm">
                 <div class="card-body">
                     <h5 class="card-title fw-bold mb-3">Información de la orden</h5>
-                    <p><strong>ID:</strong> <?= htmlspecialchars($order->getId()) ?></p>
+                    <p><strong>ID:</strong> <?= $order->getId() ?></p>
                     <p><strong>Fecha:</strong> <?= date('d/m/Y H:i', strtotime($order->getCreatedAt())) ?></p>
-                    <p><strong>Nombre completo:</strong> <?= htmlspecialchars($order->getFullName()) ?></p>
-                    <p><strong>Teléfono:</strong> <?= htmlspecialchars($order->getPhone()) ?></p>
-                    <p><strong>Ciudad:</strong> <?= htmlspecialchars($order->getCity()) ?></p>
-                    <p><strong>Código Postal:</strong> <?= htmlspecialchars($order->getPostalCode()) ?></p>
-                    <p><strong>Dirección:</strong> <?= htmlspecialchars($order->getShippingAddress()) ?></p>
+                    <p><strong>Nombre completo:</strong> <?= $order->getFullName() ?></p>
+                    <p><strong>Teléfono:</strong> <?= $order->getPhone() ?></p>
+                    <p><strong>Ciudad:</strong> <?= $order->getCity() ?></p>
+                    <p><strong>Código Postal:</strong> <?= $order->getPostalCode() ?></p>
+                    <p><strong>Dirección:</strong> <?= $order->getShippingAddress() ?></p>
                     <p><strong>Método de pago:</strong> <?= $paymentMap[$order->getPaymentMethod()] ?? ucfirst($order->getPaymentMethod()) ?></p>
                     <p>
                         <strong>Estado:</strong>
@@ -86,8 +86,8 @@ $statusMap = [
                             <tbody>
                                 <?php foreach ($order->getItems() as $item): ?>
                                     <tr>
-                                        <td><?= htmlspecialchars($item['sneaker_name']) ?></td>
-                                        <td><?= htmlspecialchars($item['size_label']) ?> US - <?= ucfirst(strtolower($item['gender'])) ?></td>
+                                        <td><?= $item['sneaker_name'] ?></td>
+                                        <td><?= $item['size_label'] ?> US - <?= ucfirst(strtolower($item['gender'])) ?></td>
                                         <td><?= (int)$item['quantity'] ?></td>
                                         <td class="text-end">US$ <?= number_format($item['price'] * $item['quantity'], 2) ?></td>
                                     </tr>

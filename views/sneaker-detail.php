@@ -10,12 +10,12 @@ $sizes = $sneaker->getSizes();
 <section class="container">
     <div class="row">
         <div class="col-12 col-md-6 p-4">
-            <img src="./images/sneakers/<?= htmlspecialchars($sneaker->getImage()) ?>" class="img-fluid sticky-top pt-3" alt="<?= htmlspecialchars($sneaker->getName()) ?>">
+            <img src="./images/sneakers/<?= $sneaker->getImage() ?>" class="img-fluid sticky-top pt-3" alt="<?= $sneaker->getName() ?>">
         </div>
         <div class="col-12 col-md-6 p-3 p-md-4">
             <div>
-                <h2 class="mt-3 mt-md-5 fw-bold h1"><?= htmlspecialchars($sneaker->getName()) ?></h2>
-                <p class="text-secondary"><?= htmlspecialchars($sneaker->getBrand()) ?></p>
+                <h2 class="mt-3 mt-md-5 fw-bold h1"><?= $sneaker->getName() ?></h2>
+                <p class="text-secondary"><?= $sneaker->getBrand() ?></p>
             </div>
 
             <p class="fs-4 fw-bolder"><?= $sneaker->getPriceWithUsdPrefix() ?></p>
@@ -50,7 +50,7 @@ $sizes = $sneaker->getSizes();
 
             <div class="descripcion">
                 <h3 class="mt-4 mt-md-5 h4">Descripción</h3>
-                <p class="text-secondary"><?= nl2br(htmlspecialchars($sneaker->getDescription())) ?></p>
+                <p class="text-secondary"><?= nl2br($sneaker->getDescription()) ?></p>
             </div>
         </div>
     </div>

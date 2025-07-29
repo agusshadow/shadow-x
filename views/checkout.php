@@ -82,10 +82,10 @@ $total = $cart->getTotal();
                     <?php foreach ($items as $item): ?>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             <div class="d-flex align-items-center">
-                                <img src="./images/sneakers/<?= htmlspecialchars($item['image']) ?>" width="50" class="me-2" alt="<?= htmlspecialchars($item['name']) ?>">
+                                <img src="./images/sneakers/<?= $item['image'] ?>" width="50" class="me-2" alt="<?= $item['name'] ?>">
                                 <div>
-                                    <strong><?= htmlspecialchars($item['name']) ?></strong><br>
-                                    <small><?= htmlspecialchars($item['size']['label']) ?> x <?= $item['quantity'] ?></small>
+                                    <strong><?= $item['name'] ?></strong><br>
+                                    <small><?= $item['size']['label'] ?> x <?= $item['quantity'] ?></small>
                                 </div>
                             </div>
                             <span>US$ <?= number_format($item['price'] * $item['quantity'], 2) ?></span>

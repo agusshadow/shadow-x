@@ -32,18 +32,18 @@ $statusMap = [
             <div class="col-md-6">
                 <p><strong>Usuario:</strong>
                     <?php if ($order->getUserId()): ?>
-                        <?= htmlspecialchars($order->getUserId()) ?>
+                        <?= $order->getUserId() ?>
                     <?php else: ?>
                         <em class="text-muted">Invitado</em>
                     <?php endif; ?>
                 </p>
-                <p><strong>Nombre completo:</strong> <?= htmlspecialchars($order->getFullName()) ?></p>
-                <p><strong>Teléfono:</strong> <?= htmlspecialchars($order->getPhone()) ?></p>
-                <p><strong>Ciudad:</strong> <?= htmlspecialchars($order->getCity()) ?></p>
+                <p><strong>Nombre completo:</strong> <?= $order->getFullName() ?></p>
+                <p><strong>Teléfono:</strong> <?= $order->getPhone() ?></p>
+                <p><strong>Ciudad:</strong> <?= $order->getCity() ?></p>
             </div>
             <div class="col-md-6">
-                <p><strong>Código postal:</strong> <?= htmlspecialchars($order->getPostalCode()) ?></p>
-                <p><strong>Dirección de envío:</strong> <?= htmlspecialchars($order->getShippingAddress()) ?></p>
+                <p><strong>Código postal:</strong> <?= $order->getPostalCode() ?></p>
+                <p><strong>Dirección de envío:</strong> <?= $order->getShippingAddress() ?></p>
                 <p><strong>Método de pago:</strong>
                     <?= $paymentMap[$order->getPaymentMethod()] ?? ucfirst($order->getPaymentMethod()) ?>
                 </p>
@@ -58,8 +58,8 @@ $statusMap = [
             <?php foreach ($order->getItems() as $item): ?>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     <div>
-                        <strong><?= htmlspecialchars($item['sneaker_name']) ?></strong><br>
-                        <small><?= htmlspecialchars($item['size_label']) ?> US - <?= ucfirst(strtolower($item['gender'])) ?></small><br>
+                        <strong><?= $item['sneaker_name'] ?></strong><br>
+                        <small><?= $item['size_label'] ?> US - <?= ucfirst(strtolower($item['gender'])) ?></small><br>
                         <small>Cantidad: <?= (int)$item['quantity'] ?></small>
                     </div>
                     <div>

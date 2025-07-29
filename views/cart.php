@@ -17,27 +17,27 @@ $items = $cart->getItems();
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     <div class="d-flex align-items-center">
                         <a href="index.php?sec=sneaker-detail&id=<?= urlencode($item['id']) ?>">
-                            <img src="./images/sneakers/<?= htmlspecialchars($item['image']) ?>" width="60" class="me-3" alt="<?= htmlspecialchars($item['name']) ?>">
+                            <img src="./images/sneakers/<?= $item['image'] ?>" width="60" class="me-3" alt="<?= $item['name'] ?>">
                         </a>
                         <div>
                             <a href="index.php?sec=sneaker-detail&id=<?= urlencode($item['id']) ?>" class="text-decoration-none text-dark fw-bold">
-                                <?= htmlspecialchars($item['name']) ?>
+                                <?= $item['name'] ?>
                             </a><br>
-                            <small><?= htmlspecialchars($item['size']['label']) ?></small>
+                            <small><?= $item['size']['label'] ?></small>
                         </div>
                     </div>
                     <div class="d-flex align-items-center">
                         <span class="me-3">US$ <?= number_format($item['price'], 2) ?></span>
 
                         <form method="POST" action="actions/cart/update.php" class="d-inline">
-                            <input type="hidden" name="key" value="<?= htmlspecialchars($key) ?>">
+                            <input type="hidden" name="key" value="<?= $key ?>">
                             <button type="submit" name="action" value="decrease" class="btn btn-sm btn-outline-secondary">-</button>
                         </form>
 
                         <span class="mx-2"><?= (int)$item['quantity'] ?></span>
 
                         <form method="POST" action="actions/cart/update.php" class="d-inline">
-                            <input type="hidden" name="key" value="<?= htmlspecialchars($key) ?>">
+                            <input type="hidden" name="key" value="<?= $key ?>">
                             <button type="submit" name="action" value="increase" class="btn btn-sm btn-outline-secondary">+</button>
                         </form>
 
