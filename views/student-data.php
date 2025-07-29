@@ -11,7 +11,7 @@
                <h3 class="card-text fw-bold h6">Fecha de nacimiento:</h3>
                <p>08/05/2002</p>
                <h3 class="card-text fw-bold h6">Edad:</h3>
-               <p>22 años</p>
+               <p>23 años</p>
                <h3 class="card-text fw-bold h6">Correo:</h3>
                <p>agustin.gonzalez8@davinci.edu.ar</p>
              </div>
